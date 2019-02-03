@@ -54,7 +54,7 @@
 // Z Probe (when not Z_MIN_PIN)
 //
 #ifndef Z_MIN_PROBE_PIN
-  #define Z_MIN_PROBE_PIN  32
+  #define Z_MIN_PROBE_PIN  33
 #endif
 
 //
@@ -80,39 +80,71 @@
 #define E1_DIR_PIN         25
 #define E1_ENABLE_PIN      27
 
-#define E2_STEP_PIN        29
-#define E2_DIR_PIN         28
-#define E2_ENABLE_PIN      39
+//#define E2_STEP_PIN        29
+//#define E2_DIR_PIN         28
+//#define E2_ENABLE_PIN      39
 
 //
 // Temperature Sensors
 //
-#if TEMP_SENSOR_0 == -1
-  #define TEMP_0_PIN        6   // Analog Input (connector *K1* on RUMBA thermocouple ADD ON is used)
+
+// Extruder 1
+#if TEMP_SENSOR_0 == 0
+  #define TEMP_0_PIN        -1
+  #define HEATER_0_PIN      -1
 #else
-  #define TEMP_0_PIN       15   // Analog Input (default connector for thermistor *T0* on rumba board is used)
+  #define HEATER_0_PIN       2
+  #if TEMP_SENSOR_0 == -1
+    #define TEMP_0_PIN       6   // Analog Input (connector *K1* on RUMBA thermocouple ADD ON is used)
+  #elif TEMP_SENSOR_0 == 20
+    #define TEMP_0_PIN       10   // Analog Input (default connector for thermistor *T0* on rumba board is used)
+  #else
+    #define TEMP_0_PIN       15
+  #endif
 #endif
 
-#if TEMP_SENSOR_1 == -1
-  #define TEMP_1_PIN        5   // Analog Input (connector *K2* on RUMBA thermocouple ADD ON is used)
+// Extruder 2
+#if TEMP_SENSOR_1 == 0
+  #define TEMP_1_PIN        -1
+  #define HEATER_1_PIN      -1
 #else
-  #define TEMP_1_PIN       14   // Analog Input (default connector for thermistor *T1* on rumba board is used)
+  #define HEATER_1_PIN       3
+  #if TEMP_SENSOR_1 == -1
+    #define TEMP_1_PIN       5   // Analog Input (connector *K2* on RUMBA thermocouple ADD ON is used)
+  #elif TEMP_SENSOR_1 == 20
+  #define TEMP_1_PIN         9   // Analog Input (default connector for thermistor *T1* on rumba board is used)
+  #else
+    #define TEMP_1_PIN       14
+  #endif
 #endif
 
-#if TEMP_SENSOR_2 == -1
-  #define TEMP_2_PIN        7   // Analog Input (connector *K3* on RUMBA thermocouple ADD ON is used <-- this can't be used when TEMP_SENSOR_BED is defined as thermocouple)
+// Extruder 3
+#if TEMP_SENSOR_2 == 0
+  #define TEMP_2_PIN        -1
+  #define HEATER_2_PIN      -1
 #else
-  #define TEMP_2_PIN       13   // Analog Input (default connector for thermistor *T2* on rumba board is used)
+  #define HEATER_2_PIN      6
+  #if TEMP_SENSOR_2 == -1
+    #define TEMP_2_PIN      7   // Analog Input (connector *K3* on RUMBA thermocouple ADD ON is used <-- this can't be used when TEMP_SENSOR_BED is defined as thermocouple)
+  #else
+    #define TEMP_2_PIN      13   // Analog Input (default connector for thermistor *T2* on rumba board is used)
+  #endif
 #endif
 
 // optional for extruder 4 or chamber:
 //#define TEMP_X_PIN         12   // Analog Input (default connector for thermistor *T3* on rumba board is used)
 //#define TEMP_CHAMBER_PIN   12   // Analog Input (default connector for thermistor *T3* on rumba board is used)
 
-#if TEMP_SENSOR_BED == -1
-  #define TEMP_BED_PIN      7   // Analog Input (connector *K3* on RUMBA thermocouple ADD ON is used <-- this can't be used when TEMP_SENSOR_2 is defined as thermocouple)
+#if TEMP_SENSOR_BED == 0
+  #define TEMP_BED_PIN        -1
+  #define HEATER_BED_PIN      -1
 #else
-  #define TEMP_BED_PIN     11   // Analog Input (default connector for thermistor *THB* on rumba board is used)
+  #define HEATER_BED_PIN       9    // BED
+  #if TEMP_SENSOR_BED == -1
+    #define TEMP_BED_PIN       7    // ANALOG NUMBERING - connector *K3* on RUMBA thermocouple ADD ON is used <-- this can not be used when TEMP_SENSOR_2 is defined as thermocouple
+  #else
+    #define TEMP_BED_PIN      11    // ANALOG NUMBERING - default connector for thermistor *THB* on rumba board is used
+  #endif
 #endif
 
 //
@@ -157,8 +189,8 @@
 #define SD_DETECT_PIN      49
 #define BEEPER_PIN         44
 #define LCD_PINS_D7        40
-#define BTN_EN1            11
-#define BTN_EN2            12
+#define BTN_EN1            12
+#define BTN_EN2            11
 #define BTN_ENC            43
 
 #if ENABLED(MKS_12864OLED) || ENABLED(MKS_12864OLED_SSD1306)
