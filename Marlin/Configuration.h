@@ -381,9 +381,9 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
   // E3D v6 (PT100, 30W)
-  #define  DEFAULT_Kp 29.20
-  #define  DEFAULT_Ki 04.73
-  #define  DEFAULT_Kd 45.33
+  #define  DEFAULT_Kp 26.46
+  #define  DEFAULT_Ki 04.68
+  #define  DEFAULT_Kd 37.41
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -438,9 +438,9 @@
 #define PID_BED_INTEGRAL_DRIVE_MAX MAX_BED_POWER  //limit for the integral term
 
   //E3D Bigbox Variable Power Density Heated bed (24V)
-  #define DEFAULT_bedKp 336
-  #define DEFAULT_bedKi 62
-  #define DEFAULT_bedKd 462.4
+  #define DEFAULT_bedKp 294.19
+  #define DEFAULT_bedKi 57.91
+  #define DEFAULT_bedKd 373.62
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
